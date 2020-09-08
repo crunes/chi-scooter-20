@@ -28,7 +28,6 @@ import numpy as np
 from time import ctime
 
 
-
 client = boto3.client(
     "s3",
     aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
@@ -299,6 +298,17 @@ def plot_scooters(geo_str, geo_dict):
     return fig
 
 
+snapshots = get_data()
+for provider, data in snapshots.items():
+    sort_by_time(data)
+
+df_dict = build_df_dict()
+all_scooters = count_by_provider(df_dict)
+
+fig_ward = plot_scooters('ward', geographies)
+fig_zip = plot_scooters('zip', geographies)
+fig_ca = plot_scooters('community', geographies)
+
 
 app = dash.Dash(__name__, external_stylesheets='https://codepen.io/charmaine-runes/pen/ZEWvdyd.css'
 app.layout = html.Div([
@@ -308,18 +318,8 @@ app.layout = html.Div([
         dcc.Tab(label="Community Area", children=dcc.Graph(figure=fig_ca)),
     ])
 ])
+server = app.server
 
 
 if __name__ == '__main__':
-
-    snapshots = get_data()
-    for provider, data in snapshots.items():
-        sort_by_time(data)
-    df_dict = build_df_dict()
-    all_scooters = count_by_provider(df_dict)
-
-    fig_ward = plot_scooters('ward', geographies)
-    fig_zip = plot_scooters('zip', geographies)
-    fig_ca = plot_scooters('community', geographies)
-
     app.run_server(debug=True)
