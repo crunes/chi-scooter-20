@@ -13,4 +13,4 @@ This Jupyter Notebook maps Bird and Lime fleets to visualize where the scooters 
 As of 7 AM on September 6, 2020, Lime had 50 percent of its fleet within the Equity Priority Area but Bird did not meet this requirement.
 
 ### Next Steps
-I will overlay share of essential workers, etc. using this [analysis by CMAP](https://www.cmap.illinois.gov/updates/all/-/asset_publisher/UIMfSLnFfMB6/content/metropolitan-chicago-s-essential-workers-disproportionately-low-income-people-of-color).
+Unfortunately, for legal reasons, the team had to pause all analysis using vendors' live data feeds. If you're interested in looking at the data, head to the [Chicago Data Portal](https://data.cityofchicago.org/browse?tags=e-scooter) for all (or most) of your open data needs!
